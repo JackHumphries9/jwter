@@ -1,4 +1,5 @@
-import chalk from "chalk";
+#! /usr/bin/env node
+
 import { Command } from "commander";
 import { handleCommandError } from "./errors/handleCommandError.js";
 import { jwtDecode } from "./jwtDecode.js";
@@ -19,13 +20,13 @@ program
 		"Pretty print the decoded token (useful to disable if your piping to a file)",
 		true
 	)
-	.action(async (token, options) => {
+	.action((token, options) => {
 		try {
 			if (!token) {
 				error("No token provided!");
 			}
 
-			jwtDecode(token);
+			jwtDecode(token, options);
 		} catch (e) {
 			handleCommandError(e);
 		}
