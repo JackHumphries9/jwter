@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { error } from "./utils";
+import { error } from "../utils.js";
 
 export const handleCommandError = (e: any) => {
 	if (e instanceof Error && e.message) {
