@@ -21,7 +21,7 @@ export const jwtDecode = (token: string, options?: DecodeOptions) => {
 		jwt = JSON.parse(decoded);
 	}
 
-	console.log(chalk.blue("Your Decoded JWT:") + "\n");
+	console.log(chalk.green("Your Decoded JWT:") + "\n");
 
 	const header = JSON.parse(
 		Buffer.from(token.split(".")[0] + "==", "base64url").toString()
