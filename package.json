@@ -1,6 +1,6 @@
 {
 	"name": "jwter",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "A command line tool to decode, sign and verify JWTs",
 	"main": "index.js",
 	"type": "module",
