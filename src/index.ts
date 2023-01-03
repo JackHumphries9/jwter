@@ -4,7 +4,9 @@ import { Command } from "commander";
 import { handleCommandError } from "./errors/handleCommandError.js";
 import { jwtDecode } from "./jwtDecode.js";
 import { jwtSign } from "./jwtSign.js";
+import { jwtVerify } from "./jwtVerify.js";
 import { error, warn } from "./utils.js";
+import { PKG_DESCRIPTION, PKG_VERSION } from "./version.js";
 
 const program = new Command();
 
@@ -24,9 +26,7 @@ const JWT_ALGORITHMS = [
 	"none",
 ];
 
-program
-	.version("1.0.0")
-	.description("A CLI for decoding, verifying and signing JWTs!");
+program.version(PKG_VERSION).description(PKG_DESCRIPTION);
 
 program
 	.command("decode")
@@ -95,6 +95,34 @@ program
 			}
 
 			jwtSign(secret, data, options);
+		} catch (e) {
+			handleCommandError(e, options.debug);
+		}
+	});
+
+program
+	.command("verify")
+	.description("Checks a JWT against a secret")
+	.argument("<secret>", "The secret to sign the data with")
+	.argument("<token>", "The payload for the token")
+
+	.option("-d, --decode", "Decode the token as well", false)
+	.option("-ie --ignore-exp", "Ignore the expiration of the token", false)
+	.option("-s, --sub <sub>", "Check the subject of the token")
+	.option("-e, --exp <exp>", "Check the expiration of the token")
+	.option("-i, --iss <iss>", "Check the issuer of the token")
+	.option("-a, --aud <aud>", "Check the audience of the token")
+
+	.action((secret, token, options) => {
+		try {
+			if (!secret) {
+				error("No secret provided!");
+			}
+			if (!token) {
+				error("No token provided!");
+			}
+
+			jwtVerify(secret, token, options);
 		} catch (e) {
 			handleCommandError(e, options.debug);
 		}

@@ -1,19 +1,32 @@
 {
 	"name": "jwter",
 	"version": "1.0.0",
-	"description": "A command line tool to decode, sign and verify JWT Tokens",
+	"description": "A command line tool to decode, sign and verify JWTs",
 	"main": "index.js",
 	"type": "module",
 	"bin": {
 		"jwter": "./dist/index.js"
 	},
 	"scripts": {
+		"prebuild": "node -p \"'export const PKG_VERSION = ' + JSON.stringify(require('./package.json').version) + ';export const PKG_DESCRIPTION = ' + JSON.stringify(require('./package.json').description) + ';'\" > src/version.ts",
 		"build": "npx tsc",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"keywords": [],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/JackHumphries9/jwter.git"
+	},
+	"keywords": [
+		"cli",
+		"jsonwebtokens",
+		"jwt",
+		"jsonwebtoken",
+		"jwt-cli",
+		"command",
+		"jwter"
+	],
 	"author": "Jack Humphries",
-	"license": "ISC",
+	"license": "GNU General Public License v3.0",
 	"dependencies": {
 		"chalk": "^5.2.0",
 		"commander": "^9.4.1",
