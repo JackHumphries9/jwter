@@ -109,7 +109,6 @@ program
 	.option("-d, --decode", "Decode the token as well", false)
 	.option("-ie --ignore-exp", "Ignore the expiration of the token", false)
 	.option("-s, --sub <sub>", "Check the subject of the token")
-	.option("-e, --exp <exp>", "Check the expiration of the token")
 	.option("-i, --iss <iss>", "Check the issuer of the token")
 	.option("-a, --aud <aud>", "Check the audience of the token")
 
