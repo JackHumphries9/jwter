@@ -23,11 +23,19 @@ export const jwtDecode = (token: string, options?: DecodeOptions) => {
 
 	const opts = { ...defaultOptions, ...options };
 
+	console.log(chalk.blue("Your Decoded JWT:") + "\n");
+
+	const header = JSON.parse(
+		Buffer.from(token.split(".")[0] + "==", "base64url").toString()
+	);
+
 	if (opts.pretty) {
-		// console.log(chalk.blue("* Header:"));
-		// console.log(JSON.stringify(jwt.header, null, 2));
-		// delete jwt.headers;
+		console.log(chalk.blue("* Header:"));
+		console.log(JSON.stringify(header, null, 2));
 		console.log(chalk.magenta("* Payload:"));
-		console.log(JSON.stringify(jwt, null, 2));
+		console.log(JSON.stringify(jwt, null, 4));
+		process.exit();
 	}
+
+	console.log(JSON.stringify(jwt, null, 4));
 };

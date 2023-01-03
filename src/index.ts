@@ -14,12 +14,12 @@ program
 program
 	.command("decode")
 	.description("Decode a JWT")
-	.argument("<token>")
-	.option(
-		"-p, --pretty",
-		"Pretty print the decoded token (useful to disable if your piping to a file)",
-		true
-	)
+	.argument("<token>", "The JWT to decode")
+	// .option(
+	// 	"-p, --pretty",
+	// 	"Pretty print the decoded token (useful to disable if your piping to a file)",
+	// 	true
+	// )
 	.action((token, options) => {
 		try {
 			if (!token) {
