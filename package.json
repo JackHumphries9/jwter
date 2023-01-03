@@ -1,7 +1,7 @@
 {
 	"name": "jwter",
 	"version": "1.0.0",
-	"description": "A simple CLI tool for generating, verifying and decoding JWTs",
+	"description": "A command line tool to decode, sign and verify JWT Tokens",
 	"main": "index.js",
 	"type": "module",
 	"bin": {
